@@ -6,14 +6,14 @@
 /*   By: mvan-rij <mvan-rij@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 10:53:45 by mvan-rij          #+#    #+#             */
-/*   Updated: 2025/05/13 14:32:49 by mvan-rij         ###   ########.fr       */
+/*   Updated: 2025/05/20 15:38:42 by mvan-rij         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h> //to use size_t
 #include "ft_printf.h"
 
-size_t	ft_strlen(const char *str)
+size_t	pf_strlen(const char *str)
 {
 	size_t	i;
 
@@ -25,7 +25,7 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-int	ft_putnbr(int nb)
+int	pf_putnbr(int nb)
 {
 	int		i;
 	char	c;
@@ -38,11 +38,11 @@ int	ft_putnbr(int nb)
 	{
 		nb = nb * -1;
 		write(1, "-", 1);
-		return (ft_putnbr(nb) + 1);
+		return (pf_putnbr(nb) + 1);
 	}
 	else if (nb > 9)
 	{
-		ret = ft_putnbr(nb / 10);
+		ret = pf_putnbr(nb / 10);
 		i = (nb % 10);
 		c = '0' + i;
 		return (ret + write(1, &c, 1));
@@ -54,7 +54,7 @@ int	ft_putnbr(int nb)
 	}
 }
 
-int	ft_putunsignednbr(unsigned int nb)
+int	pf_putunsignednbr(unsigned int nb)
 {
 	unsigned int	i;
 	char			c;
@@ -63,7 +63,7 @@ int	ft_putunsignednbr(unsigned int nb)
 	ret = 0;
 	if (nb > 9)
 	{
-		ret = ft_putunsignednbr(nb / 10);
+		ret = pf_putunsignednbr(nb / 10);
 		i = (nb % 10);
 		c = '0' + i;
 		return (ret + write(1, &c, 1));
@@ -75,7 +75,7 @@ int	ft_putunsignednbr(unsigned int nb)
 	}
 }
 
-int	ft_puthex(unsigned int nb, int uppercase)
+int	pf_puthex(unsigned int nb, int uppercase)
 {
 	char	c;
 	int		ret;
@@ -83,7 +83,7 @@ int	ft_puthex(unsigned int nb, int uppercase)
 	ret = 0;
 	if (nb > 15)
 	{
-		ret = ft_puthex(nb / 16, uppercase);
+		ret = pf_puthex(nb / 16, uppercase);
 		if (uppercase == 1)
 			c = "0123456789ABCDEF"[nb % 16];
 		else
@@ -100,7 +100,7 @@ int	ft_puthex(unsigned int nb, int uppercase)
 	}
 }
 
-int	ft_putpointer(unsigned long long p)
+int	pf_putpointer(unsigned long long p)
 {
 	char	c;
 	int		ret;
@@ -108,7 +108,7 @@ int	ft_putpointer(unsigned long long p)
 	ret = 0;
 	if (p > 15)
 	{
-		ret = ft_putpointer(p / 16);
+		ret = pf_putpointer(p / 16);
 		c = "0123456789abcdef"[p % 16];
 		return (ret + write(1, &c, 1));
 	}

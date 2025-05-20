@@ -6,7 +6,7 @@
 /*   By: mvan-rij <mvan-rij@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 14:42:57 by mvan-rij          #+#    #+#             */
-/*   Updated: 2025/05/13 14:49:56 by mvan-rij         ###   ########.fr       */
+/*   Updated: 2025/05/20 15:37:39 by mvan-rij         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	print_s(va_list args)
 	s = va_arg(args, char *);
 	if (s == NULL)
 		return (write(1, "(null)", 6));
-	return (write(1, s, ft_strlen(s)));
+	return (write(1, s, pf_strlen(s)));
 }
 
 int	print_p(va_list args)
@@ -38,7 +38,7 @@ int	print_p(va_list args)
 	if (p == NULL)
 		return (write(1, "(nil)", 5));
 	write(1, "0x", 2);
-	return (ft_putpointer((unsigned long long)p) + 2);
+	return (pf_putpointer((unsigned long long)p) + 2);
 }
 
 int	print_d(va_list args)
@@ -46,7 +46,7 @@ int	print_d(va_list args)
 	int	x;
 
 	x = va_arg(args, int);
-	return (ft_putnbr(x));
+	return (pf_putnbr(x));
 }
 
 int	print_u(va_list args)
@@ -54,5 +54,5 @@ int	print_u(va_list args)
 	unsigned int	x;
 
 	x = va_arg(args, unsigned int);
-	return (ft_putunsignednbr(x));
+	return (pf_putunsignednbr(x));
 }

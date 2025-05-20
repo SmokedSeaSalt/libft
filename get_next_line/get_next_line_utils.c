@@ -6,7 +6,7 @@
 /*   By: mvan-rij <mvan-rij@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 16:15:46 by mvan-rij          #+#    #+#             */
-/*   Updated: 2025/05/17 16:03:00 by mvan-rij         ###   ########.fr       */
+/*   Updated: 2025/05/20 10:53:32 by mvan-rij         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <stdint.h> //to use SIZE_MAX
 #include "get_next_line.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+void	*gnl_calloc(size_t nmemb, size_t size)
 {
 	unsigned char	*ret;
 	size_t			i;
@@ -75,7 +75,7 @@ ssize_t	charpos(char *s, char c)
 	return (-1);
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*gnl_substr(char const *s, unsigned int start, size_t len)
 {
 	unsigned int	str_i;
 	char			*sptr;
@@ -89,9 +89,9 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (ret);
 	}
 	if ((ssize_t)start + (ssize_t)len <= charpos(sptr, '\0'))
-		ret = ft_calloc((len + 1), sizeof(char));
+		ret = gnl_calloc((len + 1), sizeof(char));
 	else
-		ret = ft_calloc(charpos(sptr, '\0') - start + 1, sizeof(char));
+		ret = gnl_calloc(charpos(sptr, '\0') - start + 1, sizeof(char));
 	if (ret == NULL)
 		return (NULL);
 	while (sptr[str_i] != '\0' && str_i - start < len)
@@ -107,7 +107,7 @@ int	create_node(t_list **head, char *buffer, int fd)
 {
 	t_list	*newlist;
 
-	newlist = ft_calloc(1, sizeof(t_list));
+	newlist = gnl_calloc(1, sizeof(t_list));
 	if (newlist == NULL)
 		return (-1);
 	newlist->fd = fd;

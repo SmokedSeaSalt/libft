@@ -6,7 +6,7 @@
 /*   By: mvan-rij <mvan-rij@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 16:15:34 by mvan-rij          #+#    #+#             */
-/*   Updated: 2025/05/17 16:53:48 by mvan-rij         ###   ########.fr       */
+/*   Updated: 2025/05/20 14:08:04 by mvan-rij         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ void	delnode(t_list *node, t_list **head);
 int		fill_node(t_list *head, int fd, char *buffer);
 
 //utils
-void	*ft_calloc(size_t nmemb, size_t size);
+void	*gnl_calloc(size_t nmemb, size_t size);
 t_list	*get_fd_node(t_list *head, int fd);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*gnl_substr(char const *s, unsigned int start, size_t len);
 ssize_t	charpos(char *s, char c);
 int		create_node(t_list **head, char *buffer, int fd);
 

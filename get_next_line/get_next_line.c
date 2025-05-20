@@ -6,7 +6,7 @@
 /*   By: mvan-rij <mvan-rij@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 16:15:43 by mvan-rij          #+#    #+#             */
-/*   Updated: 2025/05/19 14:41:16 by mvan-rij         ###   ########.fr       */
+/*   Updated: 2025/05/20 10:47:24 by mvan-rij         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char	*get_next_line(int fd)
 		return (free_all (&head));
 	if (get_fd_node(head, fd) != NULL && (get_fd_node(head, fd))->hasnl == 1)
 		return (return_line(&head, fd));
-	buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+	buffer = gnl_calloc(BUFFER_SIZE + 1, sizeof(char));
 	if (buffer == NULL)
 		return (free_all(&head));
 	bytesread = read(fd, buffer, BUFFER_SIZE);
@@ -59,7 +59,7 @@ char	*get_next_line(int fd)
 		return (get_next_line(create_node(&head, buffer, fd)));
 	if (bytesread > 0 || (get_fd_node(head, fd))->hasnl == 0)
 		return (get_next_line(fill_node(head, fd, buffer)));
-	return (get_next_line(fd));
+	return (free(buffer), free_all(&head));
 }
 
 char	*return_line(t_list **head, int fd)
@@ -71,14 +71,14 @@ char	*return_line(t_list **head, int fd)
 	fd_node = get_fd_node(*head, fd);
 	if (fd_node->hasnl == 0)
 	{
-		ret = ft_substr(fd_node->line, 0, charpos(fd_node->line, '\0') + 1);
+		ret = gnl_substr(fd_node->line, 0, charpos(fd_node->line, '\0') + 1);
 		delnode(fd_node, head);
 		return (ret);
 	}
-	ret = ft_substr(fd_node->line, 0, charpos(fd_node->line, '\n') + 1);
+	ret = gnl_substr(fd_node->line, 0, charpos(fd_node->line, '\n') + 1);
 	if (ret == NULL)
 		return (free_all(head));
-	tmp = ft_substr(fd_node->line, charpos(fd_node->line, '\n') + 1,
+	tmp = gnl_substr(fd_node->line, charpos(fd_node->line, '\n') + 1,
 			charpos(fd_node->line, '\0'));
 	if (tmp == NULL)
 		return (free(ret), free_all(head));
@@ -113,7 +113,7 @@ int	fill_node(t_list *head, int fd, char *buffer)
 
 	fd_node = get_fd_node(head, fd);
 	linelen = charpos(fd_node->line, '\0');
-	tmp = ft_calloc((linelen + charpos(buffer, '\0') + 1), sizeof(char));
+	tmp = gnl_calloc((linelen + charpos(buffer, '\0') + 1), sizeof(char));
 	if (tmp == NULL)
 		return (-1);
 	i = -1;

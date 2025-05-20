@@ -6,7 +6,7 @@
 /*   By: mvan-rij <mvan-rij@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 14:56:10 by mvan-rij          #+#    #+#             */
-/*   Updated: 2025/05/13 16:38:34 by mvan-rij         ###   ########.fr       */
+/*   Updated: 2025/05/20 15:37:07 by mvan-rij         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ int		print_ux(va_list args);
 int		print_pct(void);
 
 //helpers
-size_t	ft_strlen(const char *str);
-int		ft_putnbr(int nb);
-int		ft_putunsignednbr(unsigned int nb);
-int		ft_puthex(unsigned int nb, int uppercase);
-int		ft_putpointer(unsigned long long p);
+size_t	pf_strlen(const char *str);
+int		pf_putnbr(int nb);
+int		pf_putunsignednbr(unsigned int nb);
+int		pf_puthex(unsigned int nb, int uppercase);
+int		pf_putpointer(unsigned long long p);
 
 #endif
