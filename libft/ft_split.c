@@ -6,14 +6,14 @@
 /*   By: mvan-rij <mvan-rij@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 14:59:08 by mvan-rij          #+#    #+#             */
-/*   Updated: 2025/05/01 15:17:46 by mvan-rij         ###   ########.fr       */
+/*   Updated: 2025/05/21 12:00:00 by mvan-rij         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
 
-static int	ft_nstr(char const *s, char c)
+int	ft_nstr(char const *s, char c)
 {
 	int	nstr;
 	int	instr;
@@ -38,7 +38,7 @@ static int	ft_nstr(char const *s, char c)
 	return (nstr);
 }
 
-static void	*ft_free(char **ret, int iret)
+void	*ft_free(char **ret, int iret)
 {
 	while (iret >= 0)
 	{
